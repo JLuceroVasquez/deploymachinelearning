@@ -1,0 +1,11 @@
+prefix=/workspaces/deploymachinelearning/venv
+exec_prefix=/workspaces/deploymachinelearning/venv
+libdir=/workspaces/deploymachinelearning/venv/lib
+includedir=/workspaces/deploymachinelearning/venv/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.38.1
+Requires:
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid
