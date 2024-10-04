@@ -1,4 +1,4 @@
-name: datapath_mlops_cvenv
+name: datapath_docker_cvenv
 channels:
   - pytorch
   - conda-forge
@@ -7,36 +7,20 @@ channels:
 dependencies:
   #- python=3.7.12
   - python=3.9
-  - pip
+  - tensorflow
   - pip:
     #- torch==1.9
-    - numpy==1.19.5
-    # - lmdb
-    # - Cython
-    # - pyarrow==5.0.0
-    # - pyyaml
-    # - easydict
-    # - ConfigArgParse
-    # - tensorboard
-    # #- torchvision
-    # - einops
-    # - matplotlib
-    # - tqdm
-    # - torchsnooper
-    # - ema-pytorch
-    # - accelerate
-    # - soundfile
-    - pandas==1.3.4
-    # - transforms3d
+    - numpy<2
+    - cookiecutter
+    - pandas
     - scipy
     - scikit-learn
-    # - librosa
-    # - omegaconf
-    # - sox
-    # - rich
-    # - ffmpeg-normalize
-    # - blobfile
-    # - essentia
-    # - pydub
-    # - praat-parselmouth
-prefix: /root/miniconda3/envs/datapath_mlops_cvenv
+    - notebook
+    - cvlib
+    - opencv-python
+    - uvicorn
+    - fastapi
+    - feature_engine
+    - hydra-core
+    #- pycaret
+prefix: /root/miniconda3/envs/datapath_docker_cvenv

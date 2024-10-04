@@ -1,0 +1,40 @@
+@JLuceroVasquez ➜ /workspaces/deploymachinelearning (main) $ pwd
+/workspaces/deploymachinelearning
+@JLuceroVasquez ➜ /workspaces/deploymachinelearning (main) $ docker build -t datapath_ubuntu20_python39 .
+[+] Building 283.1s (16/16) FINISHED                                                                                                                                                                                  docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                                                            0.2s
+ => => transferring dockerfile: 1.90kB                                                                                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:20.04                                                                                                                                                                 0.6s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                                                                                                   0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                               0.1s
+ => => transferring context: 2B                                                                                                                                                                                                 0.0s
+ => [ 1/10] FROM docker.io/library/ubuntu:20.04@sha256:6d8d9799fe6ab3221965efac00b4c34a2bcc102c086a58dff9e19a08b913c7ef                                                                                                         2.1s
+ => => resolve docker.io/library/ubuntu:20.04@sha256:6d8d9799fe6ab3221965efac00b4c34a2bcc102c086a58dff9e19a08b913c7ef                                                                                                           0.1s
+ => => sha256:6d8d9799fe6ab3221965efac00b4c34a2bcc102c086a58dff9e19a08b913c7ef 1.34kB / 1.34kB                                                                                                                                  0.0s
+ => => sha256:4334ab5016f708cf4a15794e48ebea4c5666fd2bad49679badc4930bf42d9ccb 424B / 424B                                                                                                                                      0.0s
+ => => sha256:9522b5ff29b80fb026c27040cc14b743d714a57f3ca4cff1c76c9e59ca244163 2.30kB / 2.30kB                                                                                                                                  0.0s
+ => => sha256:3823320faa42774534fd7eee0bd245af8cec6a720ad722144d40efa229291d8f 27.51MB / 27.51MB                                                                                                                                0.6s
+ => => extracting sha256:3823320faa42774534fd7eee0bd245af8cec6a720ad722144d40efa229291d8f                                                                                                                                       1.1s
+ => [internal] load build context                                                                                                                                                                                               0.1s
+ => => transferring context: 482B                                                                                                                                                                                               0.0s
+ => [ 2/10] RUN apt-get update && apt-get install -y wget git sox libsox-fmt-all                                                                                                                                               37.8s
+ => [ 3/10] RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh     && mkdir -p /workspaces/deploymachinelearning/.conda     && bash /tmp/miniconda.sh -b -p /workspaces/depl  18.3s
+ => [ 4/10] WORKDIR /workspaces/deploymachinelearning                                                                                                                                                                           0.2s
+ => [ 5/10] COPY environment.yml .                                                                                                                                                                                              0.2s
+ => [ 6/10] RUN conda update -n base -c defaults conda -y                                                                                                                                                                      11.6s
+ => [ 7/10] RUN conda install pip -y                                                                                                                                                                                            1.4s
+ => [ 8/10] RUN conda env create -f environment.yml                                                                                                                                                                           144.2s
+ => [ 9/10] RUN apt-get install -y --no-install-recommends libgl1-mesa-glx                                                                                                                                                     15.2s
+ => [10/10] RUN apt-get install -y --no-install-recommends libglib2.0-0                                                                                                                                                         2.9s
+ => exporting to image                                                                                                                                                                                                         47.9s
+ => => exporting layers                                                                                                                                                                                                        47.8s
+ => => writing image sha256:b64ccb59594de551d3bae85062889841a29a4dc9f99d056c0389ea0252c1fd8c                                                                                                                                    0.0s
+ => => naming to docker.io/library/datapath_ubuntu20_python39                                                                                                                                                                   0.0s
+@JLuceroVasquez ➜ /workspaces/deploymachinelearning (main) $ docker images
+REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
+datapath_ubuntu20_python39   latest    b64ccb59594d   57 seconds ago   4.89GB
+@JLuceroVasquez ➜ /workspaces/deploymachinelearning (main) $ docker run --rm -it --userns=host --shm-size 64G -v /workspaces/deploymachinelearning:/workspace/datapath_DEP23/ -p '8484:8484' --name DATAPATH_DEP23_CONTAINER datapath_ubuntu20_python39:latest/bin/bash 
+docker: invalid reference format.
+See 'docker run --help'.
+@JLuceroVasquez ➜ /workspaces/deploymachinelearning (main) $ docker run --rm -it --userns=host --shm-size 64G -v /workspaces/deploymachinelearning:/workspace/datapath_DEP23/ -p '8484:8484' --name DATAPATH_DEP23_CONTAINER datapath_ubuntu20_python39:latest /bin/bash
+root@9104df0fe952:/workspaces/deploymachinelearning# 
