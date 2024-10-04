@@ -8,10 +8,10 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -y wget git sox libsox-fmt-all
 
 # Descargar e instalar Miniconda
-#Para WINDOWS o Linux
-#RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh \
 #Para MAC
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O /tmp/miniconda.sh \
+#RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O /tmp/miniconda.sh \
+#Para WINDOWS o Linux
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh \
     # Crea un directorio .conda en el directorio home del usuario root.
     && mkdir /root/.conda \
     # Ejecuta el script de instalación de Miniconda en modo silencioso (sin interacción del usuario, con -b).
